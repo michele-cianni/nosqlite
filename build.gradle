@@ -1,0 +1,20 @@
+plugins {
+    id 'java'
+}
+
+allprojects {
+    group = 'com.github.michele.cianni.nosqlite'
+    version = '1.0.0'
+
+    repositories {
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+
+    sourceCompatibility = 21
+    targetCompatibility = 21
+
+}
