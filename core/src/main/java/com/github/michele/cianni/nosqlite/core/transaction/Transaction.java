@@ -2,9 +2,13 @@ package com.github.michele.cianni.nosqlite.core.transaction;
 
 public interface Transaction {
 
-    void addOperation(Runnable operation, Runnable rollback);
+    /**
+     * Commit the transaction.
+     */
+    void commit() throws TransactionException;
 
-    void commit();
-
-    void rollback();
+    /**
+     * Rollback the transaction.
+     */
+    void rollback() throws TransactionException;
 }
