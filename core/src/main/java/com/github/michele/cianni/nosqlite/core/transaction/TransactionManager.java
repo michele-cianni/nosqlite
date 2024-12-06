@@ -1,8 +1,8 @@
 package com.github.michele.cianni.nosqlite.core.transaction;
 
-@FunctionalInterface
-public interface TransactionManager {
+public interface TransactionManager extends Transaction {
 
-    Transaction startTransaction();
+    void startTransaction() throws TransactionException;
 
+    void addOperation(Runnable operation, Runnable rollback) throws TransactionException;
 }
