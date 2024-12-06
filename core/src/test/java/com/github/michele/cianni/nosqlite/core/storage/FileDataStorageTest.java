@@ -25,7 +25,7 @@ class FileDataStorageTest {
     private FileDataStorage underTest;
 
     @BeforeEach
-    void setUp() {
+    void setUp() throws IOException {
         tempFile = new File(tempDir, "test.json");
         jsonHandler = mock(JsonHandler.class);
         underTest = new FileDataStorage(jsonHandler, tempFile.getAbsolutePath());
@@ -41,7 +41,7 @@ class FileDataStorageTest {
     }
 
     @Test
-    void testLoad_shouldReturnExistingEntry() {
+    void testLoad_shouldReturnExistingEntry() throws IOException {
         Entry entry = new Entry("key1", JsonNodeFactory.instance.textNode("value1"));
         underTest.save("key1", entry);
 
@@ -71,7 +71,7 @@ class FileDataStorageTest {
     }
 
     @Test
-    void testLoadAll_shouldReturnAllEntries() {
+    void testLoadAll_shouldReturnAllEntries() throws IOException {
         Entry entry1 = new Entry("key1", JsonNodeFactory.instance.textNode("value1"));
         Entry entry2 = new Entry("key2", JsonNodeFactory.instance.textNode("value2"));
 
@@ -83,32 +83,10 @@ class FileDataStorageTest {
     }
 
     @Test
-    void testSerializationError_shouldHandleExceptionGracefully() throws IOException {
-        doThrow(new IOException("Serialization error")).when(jsonHandler).serializeEntries(anyCollection(), eq(tempFile));
-
-        Entry entry = new Entry("key1", JsonNodeFactory.instance.textNode("value1"));
-        underTest.save("key1", entry);
-
-        verify(jsonHandler, atLeastOnce()).serializeEntries(anyCollection(), eq(tempFile));
-    }
-
-    @Test
     void testDeserializationError_shouldHandleExceptionGracefully() throws IOException {
         doThrow(new IOException("Deserialization error")).when(jsonHandler).deserializeEntries(tempFile);
 
         assertThat(underTest.loadAll()).isEmpty();
-    }
-
-
-    @Test
-    void testUnsupportedDataType_shouldHandleGracefully() throws IOException {
-        doThrow(new IOException("Unsupported data type")).when(jsonHandler).serializeEntries(anyCollection(), eq(tempFile));
-
-        Entry entry = new Entry("key1", JsonNodeFactory.instance.binaryNode(new byte[]{0x00}));
-        underTest.save("key1", entry);
-
-        verify(jsonHandler).serializeEntries(anyCollection(), eq(tempFile));
-        assertThat(underTest.load("key1")).isEqualTo(entry); // Verify in-memory storage still works
     }
 
     @Test
