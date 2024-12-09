@@ -34,7 +34,7 @@ class GetCommandTest {
         assertThat(underTest.execute())
                 .isNotNull()
                 .satisfies(r -> assertThat(r.status()).isTrue())
-                .satisfies(r -> assertThat(r.message()).isEqualTo("Entry found: " + entry))
+                .satisfies(r -> assertThat(r.message()).isEqualTo("Entry found"))
                 .satisfies(r -> assertThat(r.values()).contains(entry));
 
         verify(database, times(1)).get(key);
