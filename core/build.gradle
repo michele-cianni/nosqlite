@@ -1,16 +1,31 @@
 plugins {
     id 'application'
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+    id 'org.openjfx.javafxplugin' version '0.1.0'
+}
+
+javafx {
+    version = '23.0.1'
+    modules = ['javafx.controls', 'javafx.fxml']
 }
 
 dependencies {
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.1'
+    def jacksonVersion = '2.18.2'
+    implementation 'com.fasterxml.jackson.core:jackson-core:' + jacksonVersion
+    implementation 'com.fasterxml.jackson.core:jackson-databind:' + jacksonVersion
 
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.11.3'
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.3'
-    testImplementation 'org.junit.jupiter:junit-jupiter-engine:5.11.3'
+    def javafxVersion = '23.0.1'
+    implementation 'org.openjfx:javafx-controls:' + javafxVersion
+    implementation 'org.openjfx:javafx-fxml:' + javafxVersion
 
-    testImplementation 'org.mockito:mockito-core:5.14.2'
-    testImplementation 'org.mockito:mockito-junit-jupiter:5.14.2'
+    def junitVersion = '5.11.3'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:' + junitVersion
+    testImplementation 'org.junit.jupiter:junit-jupiter:' + junitVersion
+    testImplementation 'org.junit.jupiter:junit-jupiter-engine:' + junitVersion
+
+    def mockitoVersion = '5.14.2'
+    testImplementation 'org.mockito:mockito-core:' + mockitoVersion
+    testImplementation 'org.mockito:mockito-junit-jupiter:' + mockitoVersion
 
     testImplementation 'org.assertj:assertj-core:3.21.0'
 }
@@ -21,6 +36,7 @@ test {
 
 run() {
     standardInput = System.in
+    args = ['gui']
 }
 
 jar {
