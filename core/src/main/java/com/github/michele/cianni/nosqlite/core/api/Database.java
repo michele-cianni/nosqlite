@@ -2,6 +2,7 @@ package com.github.michele.cianni.nosqlite.core.api;
 
 import com.github.michele.cianni.nosqlite.core.models.Entry;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -15,6 +16,13 @@ public interface Database {
      * @return the entry if it exists, otherwise an empty optional
      */
     Optional<Entry> get(String key);
+
+    /**
+     * Get all entries in the database.
+     *
+     * @return the list of all entries
+     */
+    Collection<Entry> getAll();
 
     /**
      * Put an entry in the database.
