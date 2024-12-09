@@ -9,6 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Predicate;
@@ -35,6 +36,11 @@ public class NoSQLiteDatabase implements Database {
     @Override
     public Optional<Entry> get(String key) {
         return Optional.ofNullable(dataStorage.load(key));
+    }
+
+    @Override
+    public Collection<Entry> getAll() {
+        return dataStorage.loadAll();
     }
 
     @Override
