@@ -3,7 +3,6 @@ package com.github.michele.cianni.nosqlite.core.command;
 import com.github.michele.cianni.nosqlite.core.api.Database;
 import com.github.michele.cianni.nosqlite.core.command.parser.CommandParsingException;
 import com.github.michele.cianni.nosqlite.core.command.parser.CommandParser;
-import com.github.michele.cianni.nosqlite.core.console.TypeCommand;
 import com.github.michele.cianni.nosqlite.core.utils.ErrorMessages;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -28,7 +27,7 @@ public final class GetCommand implements Command {
 
     public static CommandParser parser(Database database) {
         return commandLine -> {
-            LOGGER.info("Parsing get command: {}", commandLine);
+            LOGGER.info("Parsing get command");
 
             List<String> args = List.of(commandLine.trim().split(" "));
             if (args.isEmpty()) {
@@ -40,7 +39,7 @@ public final class GetCommand implements Command {
             }
 
             String commandName = args.getFirst();
-            if (TypeCommand.GET.is(commandName)) {
+            if (TypeCommand.GET.check(commandName)) {
                 List<String> parameters = args.subList(1, args.size());
                 if (parameters.size() != 1) {
                     throw new CommandParsingException(String.format(ErrorMessages.INVALID_PARAMETERS, parameters));
@@ -57,7 +56,7 @@ public final class GetCommand implements Command {
     public CommandResult execute() {
         LOGGER.info("Executing get command for key: {}", key);
         return database.get(key)
-                .map(entry -> success("Entry found: " + entry, entry))
+                .map(entry -> success("Entry found", entry))
                 .orElseGet(() -> failure("Entry not found"));
     }
 }
