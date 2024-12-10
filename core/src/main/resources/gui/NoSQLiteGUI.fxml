@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<BorderPane xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.github.michele.cianni.nosqlite.core.gui.GUIController"
+            stylesheets="@dark-theme.css">
+    <top>
+        <ToolBar>
+            <Button text="Get" onAction="#handleGetAction"/>
+            <Button text="Insert" onAction="#handleInsertAction"/>
+            <Button text="Delete" onAction="#handleDeleteAction"/>
+            <Button text="Begin" onAction="#handleBeginAction"/>
+            <Button text="Commit" onAction="#handleCommitAction"/>
+            <Button text="Rollback" onAction="#handleRollbackAction"/>
+        </ToolBar>
+    </top>
+    <center>
+        <GridPane hgap="10" vgap="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Key:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+            <TextField fx:id="keyField" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+            <Label text="Value (JSON):" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+            <TextArea fx:id="valueArea" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+            <Label text="Status:" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+            <Label fx:id="statusLabel" GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+        </GridPane>
+    </center>
+    <bottom>
+        <TableView fx:id="resultTable" prefHeight="200" />
+    </bottom>
+</BorderPane>
