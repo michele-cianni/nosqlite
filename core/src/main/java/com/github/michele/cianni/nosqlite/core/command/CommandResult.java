@@ -19,11 +19,10 @@ public record CommandResult(boolean status, String message, Object... values) {
      * Create a failed command result.
      *
      * @param message the message
-     * @param values the values
      * @return a failed command result
      */
-    public static CommandResult failure(String message, Object... values) {
-        return new CommandResult(false, message, values);
+    public static CommandResult failure(String message) {
+        return new CommandResult(false, message);
     }
 
     /**
