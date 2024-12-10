@@ -1,0 +1,120 @@
+/* dark-theme.css */
+
+/* Sfondo generale */
+.root {
+    -fx-background-color: #2b2b2b; /* Grigio scuro */
+    -fx-text-fill: #ffffff;        /* Testo bianco */
+    -fx-font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Toolbar */
+.tool-bar {
+    -fx-background-color: #3c3f41; /* Grigio intermedio */
+}
+
+/* Pulsanti */
+.button {
+    -fx-background-color: #4a90e2; /* Blu moderno */
+    -fx-text-fill: #ffffff;        /* Testo bianco */
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 8 15;
+    -fx-font-size: 14px;
+}
+.button:hover {
+    -fx-background-color: #357ab7; /* Blu più scuro per hover */
+}
+
+/* TextField e TextArea */
+.text-field, .text-area {
+    -fx-background-color: #3c3f41; /* Grigio intermedio */
+    -fx-control-inner-background: #3c3f41; /* Sfondo interno */
+    -fx-text-fill: #ffffff;        /* Testo bianco */
+    -fx-prompt-text-fill: #a9a9a9; /* Testo segnaposto grigio chiaro */
+    -fx-border-color: #4a90e2;     /* Bordo blu */
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+    -fx-padding: 5;
+    -fx-font-size: 14px;
+}
+.text-field:focused, .text-area:focused {
+    -fx-border-color: #4a90e2;
+}
+
+/* ComboBox */
+.combo-box {
+    -fx-background-color: #3c3f41; /* Grigio intermedio */
+    -fx-control-inner-background: #3c3f41; /* Sfondo interno */
+    -fx-border-color: #4a90e2;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 14px;
+}
+.combo-box .list-cell {
+    -fx-background-color: #2b2b2b;
+    -fx-text-fill: #ffffff;
+}
+.combo-box .list-cell:selected {
+    -fx-background-color: #4a90e2;
+    -fx-text-fill: #ffffff;
+}
+
+/* TableView */
+.table-view {
+    -fx-background-color: #3c3f41;
+    -fx-border-color: #4a90e2;
+    -fx-text-fill: #ffffff;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #2b2b2b; /* Colonne intestazione più scure */
+    -fx-border-color: #4a90e2;     /* Bordo blu per le intestazioni */
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-background-color: #2b2b2b; /* Assicurati che le intestazioni siano scure */
+}
+
+.table-row-cell {
+    -fx-background-color: #2b2b2b;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #4a90e2; /* Blu per righe selezionate */
+    -fx-text-fill: #ffffff;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #ffffff;
+}
+
+/* Opzionale: Migliorare l'intestazione delle colonne */
+.table-view .column-header .label {
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+}
+
+/* Etichette */
+.label {
+    -fx-text-fill: #ffffff; /* Testo bianco */
+    -fx-font-size: 14px;
+}
+
+/* Aree di testo */
+.text-area {
+    -fx-prompt-text-fill: #a9a9a9; /* Grigio chiaro per testo segnaposto */
+}
+
+/* Specificità per componenti aggiuntivi */
+.scroll-pane {
+    -fx-background-color: #2b2b2b;
+}
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
+.scroll-bar .thumb {
+    -fx-background-color: #4a90e2;
+}
+.scroll-bar .track {
+    -fx-background-color: #3c3f41;
+}
