@@ -3,7 +3,6 @@ package com.github.michele.cianni.nosqlite.core.command;
 import com.github.michele.cianni.nosqlite.core.api.Database;
 import com.github.michele.cianni.nosqlite.core.command.parser.CommandParsingException;
 import com.github.michele.cianni.nosqlite.core.command.parser.CommandParser;
-import com.github.michele.cianni.nosqlite.core.console.TypeCommand;
 import com.github.michele.cianni.nosqlite.core.utils.ErrorMessages;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -40,7 +39,7 @@ public final class DeleteCommand implements Command {
             }
 
             String commandName = args.getFirst();
-            if (TypeCommand.DELETE.is(commandName)) {
+            if (TypeCommand.DELETE.check(commandName)) {
                 List<String> parameters = args.subList(1, args.size());
                 if (parameters.size() != 1) {
                     throw new CommandParsingException("Invalid parameters: " + commandLine);
