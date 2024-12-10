@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.michele.cianni.nosqlite.core.api.Database;
 import com.github.michele.cianni.nosqlite.core.command.parser.CommandParsingException;
 import com.github.michele.cianni.nosqlite.core.command.parser.CommandParser;
-import com.github.michele.cianni.nosqlite.core.console.TypeCommand;
 import com.github.michele.cianni.nosqlite.core.models.Entry;
 import com.github.michele.cianni.nosqlite.core.utils.ErrorMessages;
 import org.apache.logging.log4j.LogManager;
@@ -43,11 +42,11 @@ public final class InsertCommand implements Command {
             }
 
             if (args.size() != 3) {
-                throw new CommandParsingException("Invalid command must is: \"insert\" <key> <value> but found: " + commandLine);
+                throw new CommandParsingException("Invalid number of arguments: " + commandLine);
             }
 
             String commandName = args.getFirst();
-            if (TypeCommand.INSERT.is(commandName)) {
+            if (TypeCommand.INSERT.check(commandName)) {
                 List<String> parameters = args.subList(1, args.size());
                 if (parameters.size() != 2) {
                     throw new CommandParsingException(String.format(ErrorMessages.INVALID_PARAMETERS, parameters));
