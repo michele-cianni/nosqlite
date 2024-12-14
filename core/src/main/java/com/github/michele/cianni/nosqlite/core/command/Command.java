@@ -1,6 +1,6 @@
 package com.github.michele.cianni.nosqlite.core.command;
 
-public sealed interface Command permits GetAllCommand, BeginCommand, CommitCommand, DeleteCommand, GetCommand, HelpCommand, InsertCommand, RollbackCommand {
+public sealed interface Command permits BeginCommand, CommitCommand, DeleteCommand, GetAllCommand, GetCommand, HelpCommand, InsertCommand, QueryCommand, RollbackCommand {
 
     /**
      * Execute the command.

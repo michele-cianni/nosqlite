@@ -16,13 +16,14 @@ public abstract class AbstractQueryProcessor implements QueryProcessor {
     }
 
     @Override
-    public List<Entry> executeQuery(Predicate<Entry> filter, List<String> sortFields) {
-        Comparator<Entry> comparator = createComparator(sortFields);
+    public List<Entry> executeQuery(Predicate<Entry> filter, String sortField, String order) {
+        Comparator<Entry> comparator = createComparator(sortField, order);
         return dataStorage.loadAll().stream()
                 .filter(filter)
                 .sorted(comparator)
                 .toList();
     }
 
-    protected abstract Comparator<Entry> createComparator(List<String> sortFields);
+    protected abstract Comparator<Entry> createComparator(String sortField, String order);
+
 }

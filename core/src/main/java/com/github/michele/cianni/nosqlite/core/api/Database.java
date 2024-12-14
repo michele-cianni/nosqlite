@@ -44,11 +44,12 @@ public interface Database {
     /**
      * Query the database.
      *
-     * @param filter the filter to apply
-     * @param sortFields the fields to sort by
+     * @param filter    the filter to apply
+     * @param sortField the fields to sort by
+     * @param order
      * @return the list of entries that satisfy the filter
      */
-    List<Entry> query(Predicate<Entry> filter, List<String> sortFields);
+    List<Entry> query(Predicate<Entry> filter, String sortField, String order);
 
     /**
      * Begin a transaction.

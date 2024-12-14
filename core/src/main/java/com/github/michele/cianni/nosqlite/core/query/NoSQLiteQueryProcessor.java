@@ -15,18 +15,19 @@ public class NoSQLiteQueryProcessor extends AbstractQueryProcessor {
     }
 
     @Override
-    protected Comparator<Entry> createComparator(List<String> sortFields) {
+    protected Comparator<Entry> createComparator(String sortField, String order) {
         return (e1, e2) -> {
-            for (String field : sortFields) {
-                JsonNode val1 = e1.value().get(field);
-                JsonNode val2 = e2.value().get(field);
-                if (val1 == null || val2 == null) continue;
 
-                int cmp = compare(val1, val2);
+                JsonNode val1 = e1.value().get(sortField);
+                JsonNode val2 = e2.value().get(sortField);
 
-                if (cmp != 0) return cmp;
-            }
-            return 0;
+                 if (order == null || order.equalsIgnoreCase("asc")) {
+                    return compare(val1, val2);
+                } else if (order.equalsIgnoreCase("desc")) {
+                    return -compare(val1, val2);
+                }
+
+                return 0;
         };
     }
 

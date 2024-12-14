@@ -26,6 +26,7 @@ public final class ConsoleCommandParser extends AbstractCommandParser {
                         TypeCommand.BEGIN, BeginCommand.parser(database),
                         TypeCommand.COMMIT, CommitCommand.parser(database),
                         TypeCommand.ROLLBACK, RollbackCommand.parser(database),
+                        TypeCommand.QUERY, QueryCommand.parser(database),
                         TypeCommand.HELP, HelpCommand.parser(this)
                 )
         );

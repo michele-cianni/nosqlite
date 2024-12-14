@@ -95,8 +95,8 @@ public class NoSQLiteDatabase implements Database {
     }
 
     @Override
-    public List<Entry> query(Predicate<Entry> filter, List<String> sortFields) {
-        return queryProcessor.executeQuery(filter, sortFields);
+    public List<Entry> query(Predicate<Entry> filter, String sortField, String order) {
+        return queryProcessor.executeQuery(filter, sortField, order);
     }
 
     @Override

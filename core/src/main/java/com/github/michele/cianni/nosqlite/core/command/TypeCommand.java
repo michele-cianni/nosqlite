@@ -11,7 +11,8 @@ public enum TypeCommand {
     BEGIN("begin", null, "Begin a transaction"),
     COMMIT("commit", null, "Commit a transaction"),
     ROLLBACK("rollback", null, "Rollback a transaction"),
-    HELP("help", null, "Show the list of available commands");
+    HELP("help", null, "Show the list of available commands"),
+    QUERY("query", "filter [SORT field ASC|DESC]", "Execute a query on the database with the given filter and sort fields");
 
     private final String nameCommand;
     private final String parameterDescription;

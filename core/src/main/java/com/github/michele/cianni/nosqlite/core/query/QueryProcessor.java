@@ -6,5 +6,5 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public interface QueryProcessor {
-    List<Entry> executeQuery(Predicate<Entry> filter, List<String> sortFields);
+    List<Entry> executeQuery(Predicate<Entry> filter, String sortField, String order);
 }

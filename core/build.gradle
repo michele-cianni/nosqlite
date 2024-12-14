@@ -18,6 +18,9 @@ dependencies {
     implementation 'org.openjfx:javafx-controls:' + javafxVersion
     implementation 'org.openjfx:javafx-fxml:' + javafxVersion
 
+    def jsonPathVersion = '2.9.0'
+    implementation 'com.jayway.jsonpath:json-path:' + jsonPathVersion
+
     def junitVersion = '5.11.3'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:' + junitVersion
     testImplementation 'org.junit.jupiter:junit-jupiter:' + junitVersion
@@ -36,7 +39,7 @@ test {
 
 run() {
     standardInput = System.in
-    args = ['gui']
+    //args = ['gui']
 }
 
 jar {
